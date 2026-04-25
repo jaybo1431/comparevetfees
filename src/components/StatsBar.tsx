@@ -1,10 +1,10 @@
 import { Search, Building2, MapPin, TrendingUp } from "lucide-react";
 
 const stats = [
-  { label: "Practices Listed", value: "38", icon: Building2, suffix: "Across Dorset" },
-  { label: "Price Points", value: "418", icon: Search, suffix: "Tracked" },
-  { label: "Towns Covered", value: "10", icon: MapPin, suffix: "Dorset Towns" },
-  { label: "Avg Savings Found", value: "£28", icon: TrendingUp, suffix: "Per Consultation" },
+  { label: "Practices Listed", value: "24", icon: Building2, suffix: "Across Dorset" },
+  { label: "Price Points", value: "264", icon: Search, suffix: "Tracked" },
+  { label: "Towns Covered", value: "7", icon: MapPin, suffix: "Dorset Towns" },
+  { label: "Avg Savings Found", value: "£22", icon: TrendingUp, suffix: "Per Consultation" },
 ];
 
 export default function StatsBar() {

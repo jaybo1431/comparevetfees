@@ -8,7 +8,12 @@
       "Bash(vercel:*)",
       "Bash(xargs cat:*)",
       "Bash(python3:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "WebSearch",
+      "WebFetch(domain:prioryvetgroup.com)",
+      "WebFetch(domain:www.springcornervets.com)",
+      "WebFetch(domain:www.davecumbervets.co.uk)",
+      "WebFetch(domain:www.magnoliavets.co.uk)"
     ]
   }
 }
