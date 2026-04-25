@@ -16,7 +16,7 @@ export default function SearchBar({ onSearch, initialQuery = "" }: SearchBarProp
     onSearch(query);
   };
 
-  const suggestions = ["Brighton", "Southampton", "Guildford", "Portsmouth", "Bath", "Exeter"];
+  const suggestions = ["Bournemouth", "Poole", "Christchurch", "Dorchester", "Weymouth", "Wimborne"];
 
   return (
     <div>
