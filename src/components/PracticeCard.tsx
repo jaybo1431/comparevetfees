@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, MapPin, Building2, User, Clock } from "lucide-react";
+import { Star, MapPin, Building2, User, Clock, Shield } from "lucide-react";
 import { Practice, getAveragePrice } from "@/data/practices";
 
 interface PracticeCardProps {
@@ -42,6 +42,10 @@ export default function PracticeCard({ practice, highlightProcedure }: PracticeC
               <span className="flex items-center gap-1">
                 <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                 {practice.rating} ({practice.reviewCount})
+              </span>
+              <span className="flex items-center gap-1" title="Transparency Score">
+                <Shield className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="font-medium text-emerald-600">{practice.transparencyScore}/5</span>
               </span>
               <span className="hidden sm:flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" />

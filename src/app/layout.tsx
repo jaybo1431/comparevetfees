@@ -7,10 +7,10 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CompareVetFees — Compare Vet Prices Across the South of England",
+  title: "CompareVetFees — Compare Vet Prices Across Dorset",
   description:
-    "Compare veterinary prices across practices in the South of England. See consultation fees, vaccination costs, neutering prices and more. Independent, transparent, and free.",
-  keywords: "vet prices, veterinary costs, compare vet fees, UK vet prices, south england vets",
+    "Compare veterinary prices across Dorset practices. See consultation fees, vaccination costs, neutering prices and more in Bournemouth, Poole, Christchurch, Dorchester & Weymouth. Independent, transparent, and free.",
+  keywords: "vet prices Dorset, veterinary costs Bournemouth, compare vet fees Poole, UK vet prices, Dorset vets, Christchurch vet prices, Weymouth vets",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

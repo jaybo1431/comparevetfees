@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git push:*)",
+      "Bash(vercel:*)",
+      "Bash(xargs cat:*)",
+      "Bash(python3:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

@@ -33,11 +33,13 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">Legal</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">Dorset Towns</h4>
             <ul className="space-y-2">
-              <li><span className="text-sm text-gray-400">Privacy Policy</span></li>
-              <li><span className="text-sm text-gray-400">Terms of Use</span></li>
-              <li><span className="text-sm text-gray-400">Cookie Policy</span></li>
+              <li><Link href="/vets/bournemouth" className="text-sm text-gray-500 hover:text-emerald-600">Bournemouth</Link></li>
+              <li><Link href="/vets/poole" className="text-sm text-gray-500 hover:text-emerald-600">Poole</Link></li>
+              <li><Link href="/vets/christchurch" className="text-sm text-gray-500 hover:text-emerald-600">Christchurch</Link></li>
+              <li><Link href="/vets/dorchester" className="text-sm text-gray-500 hover:text-emerald-600">Dorchester</Link></li>
+              <li><Link href="/vets/dorset" className="text-sm font-medium text-gray-900 hover:text-emerald-600">View All →</Link></li>
             </ul>
           </div>
         </div>

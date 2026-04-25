@@ -34,8 +34,8 @@ export default function HomePage() {
               <span className="text-emerald-600">before you walk in.</span>
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Compare veterinary prices across practices in the South of England.
-              From consultations to surgery — see the real costs, side by side.
+              Compare veterinary prices across Dorset practices.
+              From Bournemouth to Weymouth — see the real costs, side by side.
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
