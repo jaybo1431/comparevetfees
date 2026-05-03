@@ -16,35 +16,35 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
   return (
     <>
       {/* Header */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <h1 className="text-2xl font-bold text-gray-900">{practice.name}</h1>
+          <div className="flex-1 min-w-0 w-full">
+            <div className="flex items-start gap-2 mb-3 flex-wrap">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 min-w-0 flex-1">{practice.name}</h1>
               {practice.isIndependent ? (
-                <span className="text-xs font-medium bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full flex items-center gap-1">
+                <span className="text-xs font-medium bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full flex items-center gap-1 shrink-0 whitespace-nowrap">
                   <User className="w-3 h-3" /> Independent
                 </span>
               ) : (
-                <span className="text-xs font-medium bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full flex items-center gap-1">
+                <span className="text-xs font-medium bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full flex items-center gap-1 shrink-0 whitespace-nowrap">
                   <Building2 className="w-3 h-3" /> {practice.parentGroup}
                 </span>
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4" />
-                {practice.address}, {practice.town}, {practice.postcode}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-500 mb-4">
+              <span className="flex items-center gap-1.5 min-w-0">
+                <MapPin className="w-4 h-4 shrink-0" />
+                <span className="break-words">{practice.address}, {practice.town}, {practice.postcode}</span>
               </span>
-              <span className="flex items-center gap-1.5">
-                <Phone className="w-4 h-4" />
+              <span className="flex items-center gap-1.5 whitespace-nowrap">
+                <Phone className="w-4 h-4 shrink-0" />
                 <a href={`tel:${practice.phone.replace(/\s/g, "")}`} className="hover:text-emerald-600">
                   {practice.phone}
                 </a>
               </span>
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" />
+              <span className="flex items-center gap-1.5 whitespace-nowrap">
+                <Clock className="w-4 h-4 shrink-0" />
                 Established {practice.openingSince}
               </span>
             </div>
@@ -58,15 +58,15 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
             </div>
           </div>
 
-          <div className="text-right shrink-0">
+          <div className="text-right shrink-0 self-start sm:self-auto">
             <div className="flex items-center gap-1 justify-end mb-1">
               <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-              <span className="text-xl font-bold">{practice.rating}</span>
+              <span className="text-lg sm:text-xl font-bold">{practice.rating}</span>
             </div>
-            <p className="text-xs text-gray-400 mb-1">{practice.reviewCount} reviews</p>
+            <p className="text-xs text-gray-400 mb-2 whitespace-nowrap">{practice.reviewCount} reviews</p>
             <div className="flex items-center gap-1 justify-end">
-              <Shield className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm font-medium text-emerald-600">
+              <Shield className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-emerald-600 whitespace-nowrap">
                 {practice.transparencyScore}/5 transparency
               </span>
             </div>
