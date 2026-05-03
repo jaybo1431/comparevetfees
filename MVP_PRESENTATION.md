@@ -17,8 +17,8 @@ A clean, fast, trustworthy platform that helps Dorset pet owners compare vet pri
 ## ✅ MVP Features Delivered
 
 ### **1. Dorset-First Coverage**
-- **38 veterinary practices** across 10 Dorset towns
-- Complete coverage of Bournemouth, Poole, Christchurch, Dorchester, Weymouth, Wimborne, Ferndown, Verwood, Blandford Forum, and Swanage
+- **41 veterinary practices** across 14 Dorset towns
+- Complete coverage of Bournemouth, Poole, Christchurch, Weymouth, Wimborne, Ferndown, Dorchester, Verwood, Blandford Forum, Swanage, Wareham, Bridport, Shaftesbury, and Sherborne
 - Each practice includes:
   - Full address and contact details
   - Transparent pricing for 11 common procedures
@@ -100,15 +100,15 @@ Each page includes:
 
 | Metric | Value |
 |--------|-------|
-| **Practices Listed** | 38 |
-| **Towns Covered** | 10 Dorset towns |
-| **Price Points Tracked** | 418 (38 practices × 11 procedures) |
-| **Pages Generated** | 56 total (static, fast) |
-| **Location SEO Pages** | 11 |
+| **Practices Listed** | 41 |
+| **Towns Covered** | 14 Dorset towns |
+| **Price Points Tracked** | 451 (41 practices × 11 procedures) |
+| **Pages Generated** | 62 total (static, fast) |
+| **Location SEO Pages** | 15 |
 | **Average Consultation Price** | £54 |
 | **Price Range** | £42 - £72 |
-| **Independent Practices** | 24 (63%) |
-| **Corporate Owned** | 14 (37%) |
+| **Independent Practices** | 38 (93%) |
+| **Corporate Owned** | 3 (7%) |
 
 ---
 

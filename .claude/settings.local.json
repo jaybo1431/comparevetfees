@@ -15,7 +15,9 @@
       "WebFetch(domain:www.davecumbervets.co.uk)",
       "WebFetch(domain:www.magnoliavets.co.uk)",
       "WebFetch(domain:rightvet.co.uk)",
-      "WebFetch(domain:www.rightvet.uk)"
+      "WebFetch(domain:www.rightvet.uk)",
+      "WebFetch(domain:www.natterjacksvet.com)",
+      "WebFetch(domain:www.damoryvets.co.uk)"
     ]
   }
 }

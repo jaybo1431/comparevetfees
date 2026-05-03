@@ -197,11 +197,11 @@
 
 | Metric | Value |
 |--------|-------|
-| **Practices Listed** | 24 (all real) |
-| **Towns Covered** | 7 Dorset towns |
-| **Price Points Tracked** | 264 (24 × 11 procedures) |
-| **Static Pages Generated** | 42 |
-| **SEO Location Pages** | 11 |
+| **Practices Listed** | 41 (all real) |
+| **Towns Covered** | 14 Dorset towns |
+| **Price Points Tracked** | 451 (41 × 11 procedures) |
+| **Static Pages Generated** | 62 |
+| **SEO Location Pages** | 15 |
 | **Lead Gen Forms** | 1 per practice (24 total) |
 | **Independent Practices** | 15 (62.5%) |
 | **Corporate Owned** | 9 (37.5%) |

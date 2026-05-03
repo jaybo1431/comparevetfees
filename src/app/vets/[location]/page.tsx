@@ -13,11 +13,11 @@ interface PageProps {
 const LOCATION_INFO: Record<string, { fullName: string; description: string }> = {
   bournemouth: {
     fullName: "Bournemouth",
-    description: "Compare vet prices across 10 practices in Bournemouth. From Charminster to Southbourne, find transparent pricing for consultations, vaccinations, neutering and more.",
+    description: "Compare vet prices across 7 practices in Bournemouth. From Charminster to Southbourne, find transparent pricing for consultations, vaccinations, neutering and more.",
   },
   poole: {
     fullName: "Poole",
-    description: "Compare vet prices across 8 practices in Poole. Covering Parkstone, Canford Heath, Broadstone, and Hamworthy with full price transparency.",
+    description: "Compare vet prices across 6 practices in Poole. Covering Parkstone, Canford Heath, Broadstone, Hamworthy and Upton with full price transparency.",
   },
   christchurch: {
     fullName: "Christchurch",
@@ -25,11 +25,11 @@ const LOCATION_INFO: Record<string, { fullName: string; description: string }> =
   },
   dorchester: {
     fullName: "Dorchester",
-    description: "Compare vet prices across 4 practices in Dorchester. Covering Poundbury and surrounding areas with transparent veterinary pricing.",
+    description: "Compare vet prices across 2 practices in Dorchester. Covering Poundbury and surrounding areas with transparent veterinary pricing.",
   },
   weymouth: {
     fullName: "Weymouth",
-    description: "Compare vet prices across 4 practices in Weymouth. Including Wyke Regis, Upwey, and Rodwell with full price comparisons.",
+    description: "Compare vet prices across 3 practices in Weymouth. Including Wyke Regis, Upwey, and Rodwell with full price comparisons.",
   },
   wimborne: {
     fullName: "Wimborne",
@@ -41,19 +41,35 @@ const LOCATION_INFO: Record<string, { fullName: string; description: string }> =
   },
   verwood: {
     fullName: "Verwood",
-    description: "Compare vet prices in Verwood with detailed pricing information for consultations, vaccinations, and treatments.",
+    description: "Compare vet prices across 2 practices in Verwood with detailed pricing information for consultations, vaccinations, and treatments.",
   },
   "blandford-forum": {
     fullName: "Blandford Forum",
-    description: "Compare vet prices in Blandford Forum with transparent pricing for farm animals, pets, and equine services.",
+    description: "Compare vet prices across 2 practices in Blandford Forum with transparent pricing for farm animals, pets, and equine services.",
+  },
+  bridport: {
+    fullName: "Bridport",
+    description: "Compare vet prices across 2 practices in Bridport with detailed pricing for small animal and farm services in West Dorset.",
   },
   swanage: {
     fullName: "Swanage",
-    description: "Compare vet prices in Swanage with detailed coastal pet care pricing and service information.",
+    description: "Compare vet prices in Swanage with detailed coastal pet care pricing and comprehensive veterinary services.",
+  },
+  wareham: {
+    fullName: "Wareham",
+    description: "Compare vet prices across 2 practices in Wareham with transparent pricing for pets in Purbeck and surrounding areas.",
+  },
+  shaftesbury: {
+    fullName: "Shaftesbury",
+    description: "Compare vet prices across 2 practices in Shaftesbury with detailed pricing for small animal care in North Dorset.",
+  },
+  sherborne: {
+    fullName: "Sherborne",
+    description: "Compare vet prices across 3 practices in Sherborne with transparent pricing for farm animals and small animal care.",
   },
   dorset: {
     fullName: "Dorset",
-    description: "Compare vet prices across all 38 practices in Dorset. From Bournemouth to Weymouth, find transparent pricing across the county.",
+    description: "Compare vet prices across all 41 practices in Dorset. From Bournemouth to Sherborne, find transparent pricing across the county.",
   },
 };
 

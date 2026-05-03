@@ -19,7 +19,7 @@ CompareVetFees is the **Dorset pet owner's trusted local guide** (24 verified pr
 
 | Aspect | **RightVet** | **CompareVetFees** | **Winner** |
 |--------|-------------|-------------------|-----------|
-| **Coverage** | 5,682 UK practices | 24 Dorset practices | Tie* |
+| **Coverage** | 5,682 UK practices | 41 Dorset practices | Tie* |
 | **Data Quality** | Scraped/aggregated | Hand-verified, callable | ✅ **Us** |
 | **Design** | Corporate gray, data-heavy | Warm emerald, user-friendly | ✅ **Us** |
 | **Revenue Model** | Practice subscriptions | Lead generation (£5-£15/enquiry) | ✅ **Us** |
@@ -38,7 +38,7 @@ CompareVetFees is the **Dorset pet owner's trusted local guide** (24 verified pr
 
 ### 1. **Hyper-Local Dominance**
 **RightVet's Weakness:** Spread too thin across 5,682 practices. Their Dorset data is buried, likely outdated, and unverified.
-**Our Strength:** 24 REAL Dorset practices. Every phone number works. Every address is correct. Every price is verified.
+**Our Strength:** 41 REAL Dorset practices across 14 towns. Every phone number works. Every address is correct. Every price is verified.
 
 **Why This Matters:**
 - Google favors local content ("vet prices Bournemouth" = we rank, they don't)
@@ -82,7 +82,7 @@ CompareVetFees is the **Dorset pet owner's trusted local guide** (24 verified pr
 ---
 
 ### 4. **SEO Moat: We Own Dorset Search**
-**Our 11 Location Pages:**
+**Our 15 Location Pages:**
 - /vets/bournemouth → "vet prices Bournemouth"
 - /vets/poole → "vet prices Poole"
 - /vets/christchurch → "vet prices Christchurch"
