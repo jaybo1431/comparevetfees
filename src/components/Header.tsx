@@ -11,10 +11,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo className="w-9 h-9" />
-            <span className="text-xl font-bold text-gray-900">
+        <div className="flex items-center justify-between h-20">
+          <Link href="/" className="flex items-center gap-3 group">
+            <Logo className="w-14 h-14 sm:w-16 sm:h-16 transition-transform group-hover:scale-105" />
+            <span className="text-xl sm:text-2xl font-bold text-gray-900">
               Compare<span className="text-blue-600">VetFees</span>
             </span>
           </Link>

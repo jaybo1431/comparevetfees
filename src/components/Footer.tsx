@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <Logo className="w-8 h-8" />
-              <span className="text-lg font-bold text-gray-900">
+            <div className="flex items-center gap-3 mb-3">
+              <Logo className="w-12 h-12" />
+              <span className="text-xl font-bold text-gray-900">
                 Compare<span className="text-blue-600">VetFees</span>
               </span>
             </div>
