@@ -43,12 +43,12 @@ export default function HowItWorksPage() {
         {steps.map((step, idx) => (
           <div key={step.title} className="flex items-start gap-6">
             <div className="shrink-0">
-              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-                <step.icon className="w-6 h-6 text-emerald-600" />
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <step.icon className="w-6 h-6 text-blue-600" />
               </div>
             </div>
             <div>
-              <p className="text-xs font-medium text-emerald-600 mb-1">Step {idx + 1}</p>
+              <p className="text-xs font-medium text-blue-600 mb-1">Step {idx + 1}</p>
               <h2 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h2>
               <p className="text-gray-500">{step.description}</p>
             </div>
@@ -84,7 +84,7 @@ export default function HowItWorksPage() {
               "We will never take a booking fee — contact practices directly",
             ].map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
                 <span className="text-sm text-gray-600">{item}</span>
               </li>
             ))}
@@ -95,7 +95,7 @@ export default function HowItWorksPage() {
       <div className="text-center mt-12">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 bg-emerald-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-emerald-700 transition"
+          className="inline-flex items-center gap-2 bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition"
         >
           Start comparing prices <ArrowRight className="w-4 h-4" />
         </Link>

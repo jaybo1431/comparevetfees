@@ -34,7 +34,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
           <select
             value={selectedProcedure}
             onChange={(e) => setSelectedProcedure(e.target.value as PriceKey)}
-            className="text-xs sm:text-sm border border-gray-200 rounded-lg px-2 sm:px-3 py-2 bg-white focus:outline-none focus:border-emerald-500 flex-1 sm:flex-none min-w-0"
+            className="text-xs sm:text-sm border border-gray-200 rounded-lg px-2 sm:px-3 py-2 bg-white focus:outline-none focus:border-blue-500 flex-1 sm:flex-none min-w-0"
           >
             {PRICE_KEYS.map((key) => (
               <option key={key} value={key}>
@@ -56,7 +56,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
       <div className="grid grid-cols-3 border-b border-gray-100">
         <div className="p-2 sm:p-3 text-center border-r border-gray-100">
           <p className="text-[10px] sm:text-xs text-gray-400">Lowest</p>
-          <p className="text-base sm:text-lg font-bold text-emerald-600 whitespace-nowrap">£{min}</p>
+          <p className="text-base sm:text-lg font-bold text-blue-600 whitespace-nowrap">£{min}</p>
         </div>
         <div className="p-2 sm:p-3 text-center border-r border-gray-100">
           <p className="text-[10px] sm:text-xs text-gray-400">Average</p>
@@ -79,7 +79,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
           return (
             <div key={practice.slug} className="flex items-center px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-gray-50 transition">
               <div className="w-6 sm:w-8 text-center shrink-0">
-                <span className={`text-xs sm:text-sm font-bold ${idx === 0 ? "text-emerald-600" : "text-gray-400"}`}>
+                <span className={`text-xs sm:text-sm font-bold ${idx === 0 ? "text-blue-600" : "text-gray-400"}`}>
                   {idx + 1}
                 </span>
               </div>
@@ -91,7 +91,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
                 <div className="w-full bg-gray-100 rounded-full h-2">
                   <div
                     className={`h-2 rounded-full transition-all ${
-                      pct < 33 ? "bg-emerald-500" : pct < 66 ? "bg-amber-400" : "bg-red-400"
+                      pct < 33 ? "bg-blue-500" : pct < 66 ? "bg-amber-400" : "bg-red-400"
                     }`}
                     style={{ width: `${Math.max(pct, 4)}%` }}
                   />
@@ -101,7 +101,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
                 <p className="text-sm sm:text-base font-bold text-gray-900 whitespace-nowrap">£{price}</p>
                 <div className="flex items-center justify-end gap-0.5 sm:gap-1">
                   {diff < -3 ? (
-                    <TrendingDown className="w-3 h-3 text-emerald-500 shrink-0" />
+                    <TrendingDown className="w-3 h-3 text-blue-500 shrink-0" />
                   ) : diff > 3 ? (
                     <TrendingUp className="w-3 h-3 text-red-500 shrink-0" />
                   ) : (
@@ -109,7 +109,7 @@ export default function PriceComparisonTable({ practices }: PriceComparisonTable
                   )}
                   <span
                     className={`text-[10px] sm:text-[11px] whitespace-nowrap ${
-                      diff < -3 ? "text-emerald-600" : diff > 3 ? "text-red-500" : "text-gray-400"
+                      diff < -3 ? "text-blue-600" : diff > 3 ? "text-red-500" : "text-gray-400"
                     }`}
                   >
                     {diff > 0 ? "+" : ""}

@@ -121,13 +121,13 @@ export default async function LocationPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-emerald-600 mb-6 transition"
+            className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-600 mb-6 transition"
           >
             <ArrowLeft className="w-4 h-4" /> Back to all locations
           </Link>
 
           <div className="flex items-center gap-3 mb-4">
-            <MapPin className="w-8 h-8 text-emerald-600" />
+            <MapPin className="w-8 h-8 text-blue-600" />
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
               Vet Prices in {info.fullName}
             </h1>
@@ -150,7 +150,7 @@ export default async function LocationPage({ params }: PageProps) {
             <p className="text-xs text-gray-500">Avg Consultation</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
-            <p className="text-2xl font-bold text-emerald-600">£{lowestConsult}</p>
+            <p className="text-2xl font-bold text-blue-600">£{lowestConsult}</p>
             <p className="text-xs text-gray-500">Lowest Consultation</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
@@ -189,14 +189,14 @@ export default async function LocationPage({ params }: PageProps) {
                   <div>
                     <p className="text-xs text-gray-500">Standard Consultation</p>
                     <p className="text-sm text-gray-900">
-                      <span className="font-bold text-emerald-600">£{lowestConsult}</span>
+                      <span className="font-bold text-blue-600">£{lowestConsult}</span>
                       {" – "}
                       <span className="font-bold text-gray-900">£{highestConsult}</span>
                     </p>
                   </div>
                   <div className="pt-3 border-t border-gray-100">
                     <div className="flex items-center gap-2 mb-2">
-                      <Shield className="w-4 h-4 text-emerald-500" />
+                      <Shield className="w-4 h-4 text-blue-500" />
                       <p className="text-xs font-medium text-gray-900">Why use CompareVetFees?</p>
                     </div>
                     <ul className="space-y-1 text-xs text-gray-600">
@@ -221,14 +221,14 @@ export default async function LocationPage({ params }: PageProps) {
                         <Link
                           key={key}
                           href={`/vets/${key}`}
-                          className="block text-sm text-emerald-600 hover:text-emerald-700 hover:underline"
+                          className="block text-sm text-blue-600 hover:text-blue-700 hover:underline"
                         >
                           {value.fullName} Vets →
                         </Link>
                       ))}
                     <Link
                       href="/vets/dorset"
-                      className="block text-sm font-medium text-gray-900 hover:text-emerald-600 pt-2 border-t border-gray-100"
+                      className="block text-sm font-medium text-gray-900 hover:text-blue-600 pt-2 border-t border-gray-100"
                     >
                       View all Dorset vets →
                     </Link>

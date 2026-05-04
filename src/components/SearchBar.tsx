@@ -21,7 +21,7 @@ export default function SearchBar({ onSearch, initialQuery = "" }: SearchBarProp
   return (
     <div>
       <form onSubmit={handleSubmit} className="relative">
-        <div className="flex items-center bg-white rounded-xl border-2 border-gray-200 focus-within:border-emerald-500 transition shadow-sm">
+        <div className="flex items-center bg-white rounded-xl border-2 border-gray-200 focus-within:border-blue-500 transition shadow-sm">
           <div className="pl-3 sm:pl-4">
             <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0" />
           </div>
@@ -34,7 +34,7 @@ export default function SearchBar({ onSearch, initialQuery = "" }: SearchBarProp
           />
           <button
             type="submit"
-            className="mr-2 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium shrink-0"
+            className="mr-2 bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-blue-700 transition flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium shrink-0"
           >
             <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="hidden xs:inline sm:inline">Search</span>
@@ -50,7 +50,7 @@ export default function SearchBar({ onSearch, initialQuery = "" }: SearchBarProp
               setQuery(s);
               onSearch(s);
             }}
-            className="text-xs text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full transition hover:bg-emerald-100"
+            className="text-xs text-blue-600 hover:text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full transition hover:bg-blue-100"
           >
             {s}
           </button>

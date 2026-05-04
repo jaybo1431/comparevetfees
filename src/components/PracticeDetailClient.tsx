@@ -39,7 +39,7 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
               </span>
               <span className="flex items-center gap-1.5 whitespace-nowrap">
                 <Phone className="w-4 h-4 shrink-0" />
-                <a href={`tel:${practice.phone.replace(/\s/g, "")}`} className="hover:text-emerald-600">
+                <a href={`tel:${practice.phone.replace(/\s/g, "")}`} className="hover:text-blue-600">
                   {practice.phone}
                 </a>
               </span>
@@ -51,7 +51,7 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
 
             <div className="flex flex-wrap gap-2">
               {practice.features.map((f) => (
-                <span key={f} className="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md">
+                <span key={f} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">
                   {f}
                 </span>
               ))}
@@ -65,8 +65,8 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
             </div>
             <p className="text-xs text-gray-400 mb-2 whitespace-nowrap">{practice.reviewCount} reviews</p>
             <div className="flex items-center gap-1 justify-end">
-              <Shield className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span className="text-xs sm:text-sm font-medium text-emerald-600 whitespace-nowrap">
+              <Shield className="w-4 h-4 text-blue-500 shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-blue-600 whitespace-nowrap">
                 {practice.transparencyScore}/5 transparency
               </span>
             </div>
@@ -77,7 +77,7 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
         <div className="mt-6 pt-6 border-t border-gray-200">
           <button
             onClick={() => setIsContactModalOpen(true)}
-            className="w-full sm:w-auto bg-emerald-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
           >
             <MessageSquare className="w-5 h-5" />
             Get a Quote from this Practice
@@ -120,8 +120,8 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
                     <div className="flex items-center gap-1 justify-end">
                       {diff < -3 ? (
                         <>
-                          <TrendingDown className="w-3 h-3 text-emerald-500" />
-                          <span className="text-xs text-emerald-600">£{Math.abs(diff)} below avg</span>
+                          <TrendingDown className="w-3 h-3 text-blue-500" />
+                          <span className="text-xs text-blue-600">£{Math.abs(diff)} below avg</span>
                         </>
                       ) : diff > 3 ? (
                         <>
@@ -147,7 +147,7 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
       </div>
 
       {/* Bottom CTA */}
-      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 text-center">
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6 text-center">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           Ready to book an appointment?
         </h3>
@@ -156,7 +156,7 @@ export default function PracticeDetailClient({ practice, practicesCount }: Pract
         </p>
         <button
           onClick={() => setIsContactModalOpen(true)}
-          className="bg-emerald-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-emerald-700 transition inline-flex items-center gap-2"
+          className="bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition inline-flex items-center gap-2"
         >
           <MessageSquare className="w-5 h-5" />
           Send Enquiry

@@ -1,5 +1,5 @@
-import { Shield } from "lucide-react";
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -8,11 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-4 h-4 text-white" />
-              </div>
+              <Logo className="w-8 h-8" />
               <span className="text-lg font-bold text-gray-900">
-                Compare<span className="text-emerald-600">VetFees</span>
+                Compare<span className="text-blue-600">VetFees</span>
               </span>
             </div>
             <p className="text-sm text-gray-500 max-w-md">
@@ -27,19 +25,19 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-3">Platform</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-sm text-gray-500 hover:text-emerald-600">Compare Prices</Link></li>
-              <li><Link href="/how-it-works" className="text-sm text-gray-500 hover:text-emerald-600">How It Works</Link></li>
-              <li><Link href="/about" className="text-sm text-gray-500 hover:text-emerald-600">About Us</Link></li>
+              <li><Link href="/" className="text-sm text-gray-500 hover:text-blue-600">Compare Prices</Link></li>
+              <li><Link href="/how-it-works" className="text-sm text-gray-500 hover:text-blue-600">How It Works</Link></li>
+              <li><Link href="/about" className="text-sm text-gray-500 hover:text-blue-600">About Us</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-3">Dorset Towns</h4>
             <ul className="space-y-2">
-              <li><Link href="/vets/bournemouth" className="text-sm text-gray-500 hover:text-emerald-600">Bournemouth</Link></li>
-              <li><Link href="/vets/poole" className="text-sm text-gray-500 hover:text-emerald-600">Poole</Link></li>
-              <li><Link href="/vets/christchurch" className="text-sm text-gray-500 hover:text-emerald-600">Christchurch</Link></li>
-              <li><Link href="/vets/dorchester" className="text-sm text-gray-500 hover:text-emerald-600">Dorchester</Link></li>
-              <li><Link href="/vets/dorset" className="text-sm font-medium text-gray-900 hover:text-emerald-600">View All →</Link></li>
+              <li><Link href="/vets/bournemouth" className="text-sm text-gray-500 hover:text-blue-600">Bournemouth</Link></li>
+              <li><Link href="/vets/poole" className="text-sm text-gray-500 hover:text-blue-600">Poole</Link></li>
+              <li><Link href="/vets/christchurch" className="text-sm text-gray-500 hover:text-blue-600">Christchurch</Link></li>
+              <li><Link href="/vets/dorchester" className="text-sm text-gray-500 hover:text-blue-600">Dorchester</Link></li>
+              <li><Link href="/vets/dorset" className="text-sm font-medium text-gray-900 hover:text-blue-600">View All →</Link></li>
             </ul>
           </div>
         </div>

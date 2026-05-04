@@ -17,7 +17,9 @@
       "WebFetch(domain:rightvet.co.uk)",
       "WebFetch(domain:www.rightvet.uk)",
       "WebFetch(domain:www.natterjacksvet.com)",
-      "WebFetch(domain:www.damoryvets.co.uk)"
+      "WebFetch(domain:www.damoryvets.co.uk)",
+      "Bash(ls:*)",
+      "WebFetch(domain:chatgpt.com)"
     ]
   }
 }

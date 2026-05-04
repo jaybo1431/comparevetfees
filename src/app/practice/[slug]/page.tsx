@@ -32,7 +32,7 @@ export default async function PracticePage({ params }: PageProps) {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link
         href="/"
-        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-emerald-600 mb-6 transition"
+        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-600 mb-6 transition"
       >
         <ArrowLeft className="w-4 h-4" /> Back to all practices
       </Link>

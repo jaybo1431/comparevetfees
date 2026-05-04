@@ -106,7 +106,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 placeholder="John Smith"
               />
             </div>
@@ -123,7 +123,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   placeholder="john@example.com"
                 />
               </div>
@@ -136,7 +136,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   placeholder="07123 456789"
                 />
               </div>
@@ -153,7 +153,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                   required
                   value={formData.petType}
                   onChange={(e) => setFormData({ ...formData, petType: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 >
                   <option value="">Select...</option>
                   <option value="Dog">Dog</option>
@@ -171,7 +171,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                   required
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 >
                   <option value="">Select...</option>
                   <option value="Consultation">Consultation</option>
@@ -194,16 +194,16 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition resize-none"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
                 placeholder="Any additional details about your enquiry..."
               />
             </div>
 
             {/* Submit Status */}
             {submitStatus === "success" && (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-center gap-2">
-                <Send className="w-5 h-5 text-emerald-600" />
-                <p className="text-sm text-emerald-800 font-medium">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-2">
+                <Send className="w-5 h-5 text-blue-600" />
+                <p className="text-sm text-blue-800 font-medium">
                   Your enquiry has been sent! The practice will contact you soon.
                 </p>
               </div>
@@ -229,7 +229,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 px-4 py-2.5 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
@@ -251,7 +251,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
               <div className="space-y-2">
                 <a
                   href={`tel:${practice.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2 text-sm text-gray-700 hover:text-emerald-600 transition"
+                  className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition"
                 >
                   <Phone className="w-4 h-4" />
                   {practice.phone}
@@ -261,7 +261,7 @@ export default function ContactPracticeModal({ practice, isOpen, onClose }: Cont
                     href={practice.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-emerald-600 transition"
+                    className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition"
                   >
                     <Mail className="w-4 h-4" />
                     Visit website

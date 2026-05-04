@@ -65,8 +65,8 @@ export default function AboutPage() {
             },
           ].map((v) => (
             <div key={v.title} className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
-                <v.icon className="w-5 h-5 text-emerald-600" />
+              <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
+                <v.icon className="w-5 h-5 text-blue-600" />
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-gray-900">{v.title}</h3>
@@ -77,7 +77,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center">
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
         <h2 className="text-xl font-semibold text-gray-900 mb-3">Starting in Dorset</h2>
         <p className="text-gray-600 max-w-lg mx-auto mb-6">
           We&apos;re launching in Dorset first — Bournemouth, Poole, Christchurch, Dorchester, Weymouth, and surrounding towns.
@@ -85,7 +85,7 @@ export default function AboutPage() {
         </p>
         <Link
           href="/"
-          className="inline-flex items-center gap-2 bg-emerald-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-emerald-700 transition"
+          className="inline-flex items-center gap-2 bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition"
         >
           Start comparing prices
         </Link>

@@ -16,11 +16,11 @@ export default function PracticeCard({ practice, highlightProcedure }: PracticeC
 
   return (
     <Link href={`/practice/${practice.slug}`} className="block">
-      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:border-emerald-300 hover:shadow-md transition group">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:border-blue-300 hover:shadow-md transition group">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
           <div className="flex-1 min-w-0 w-full">
             <div className="flex items-start gap-2 mb-2 flex-wrap">
-              <h3 className="text-base font-semibold text-gray-900 group-hover:text-emerald-700 transition min-w-0 flex-1">
+              <h3 className="text-base font-semibold text-gray-900 group-hover:text-blue-700 transition min-w-0 flex-1">
                 {practice.name}
               </h3>
               {practice.isIndependent ? (
@@ -44,8 +44,8 @@ export default function PracticeCard({ practice, highlightProcedure }: PracticeC
                 {practice.rating} ({practice.reviewCount})
               </span>
               <span className="flex items-center gap-1 whitespace-nowrap" title="Transparency Score">
-                <Shield className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                <span className="font-medium text-emerald-600">{practice.transparencyScore}/5</span>
+                <Shield className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <span className="font-medium text-blue-600">{practice.transparencyScore}/5</span>
               </span>
               <span className="hidden sm:flex items-center gap-1 whitespace-nowrap">
                 <Clock className="w-3.5 h-3.5 shrink-0" />
@@ -69,7 +69,7 @@ export default function PracticeCard({ practice, highlightProcedure }: PracticeC
             <p className="text-xs text-gray-400 mb-0.5 whitespace-nowrap">Consultation</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-900 whitespace-nowrap">£{consultPrice}</p>
             {isPriceLow && (
-              <span className="text-[10px] sm:text-[11px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-1 whitespace-nowrap">
+              <span className="text-[10px] sm:text-[11px] font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full inline-block mt-1 whitespace-nowrap">
                 £{Math.abs(priceDiff)} below avg
               </span>
             )}

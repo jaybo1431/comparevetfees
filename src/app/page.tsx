@@ -25,13 +25,13 @@ export default function HomePage() {
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="max-w-3xl mx-auto text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1.5 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full mb-4">
               <Shield className="w-3.5 h-3.5" />
               Independent &middot; Transparent &middot; Free
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-4">
               Know what your vet charges{" "}
-              <span className="text-emerald-600">before you walk in.</span>
+              <span className="text-blue-600">before you walk in.</span>
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               Compare veterinary prices across Dorset practices.
@@ -69,7 +69,7 @@ export default function HomePage() {
                     setResults(practices);
                     setSearched(false);
                   }}
-                  className="text-sm text-emerald-600 hover:text-emerald-700"
+                  className="text-sm text-blue-600 hover:text-blue-700"
                 >
                   Show all
                 </button>
@@ -103,7 +103,7 @@ export default function HomePage() {
                     "Aligned with CMA transparency reforms",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
                       <span className="text-sm text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -115,16 +115,16 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-emerald-600">
+      <section className="bg-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
             Are you a veterinary practice?
           </h2>
-          <p className="text-emerald-100 max-w-lg mx-auto mb-6">
+          <p className="text-blue-100 max-w-lg mx-auto mb-6">
             Claim your profile, update your prices, and reach thousands of local pet owners
             searching for transparent veterinary care.
           </p>
-          <button className="bg-white text-emerald-700 font-medium px-6 py-3 rounded-lg hover:bg-emerald-50 transition inline-flex items-center gap-2">
+          <button className="bg-white text-blue-700 font-medium px-6 py-3 rounded-lg hover:bg-blue-50 transition inline-flex items-center gap-2">
             Claim Your Practice <ArrowRight className="w-4 h-4" />
           </button>
         </div>
