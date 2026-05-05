@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import Logo from "./Logo";
+import AuthButton from "./AuthButton";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-3">
             <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded-full">Beta</span>
+            <AuthButton />
             <button className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
               <Search className="w-4 h-4" />
               Find a Vet
@@ -57,6 +59,9 @@ export default function Header() {
             <Link href="/about" className="block text-sm font-medium text-gray-700" onClick={() => setMobileOpen(false)}>
               About
             </Link>
+            <div className="pt-3 border-t border-gray-100">
+              <AuthButton />
+            </div>
           </div>
         </div>
       )}

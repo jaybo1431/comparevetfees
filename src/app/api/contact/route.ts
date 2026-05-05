@@ -1,51 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { getPracticeBySlug } from "@/data/practices";
-
-// Email notification function (placeholder - integrate with Resend, SendGrid, etc.)
-async function sendEmailNotification(data: {
-  practiceEmail?: string;
-  practiceName: string;
-  customerName: string;
-  customerEmail: string;
-  customerPhone: string;
-  petType: string;
-  service: string;
-  message: string;
-  submittedAt: string;
-}) {
-  // Log the enquiry for now
-  console.log("=== NEW LEAD ENQUIRY ===");
-  console.log(`Practice: ${data.practiceName}`);
-  console.log(`Customer: ${data.customerName} (${data.customerEmail})`);
-  console.log(`Phone: ${data.customerPhone || "Not provided"}`);
-  console.log(`Pet: ${data.petType} | Service: ${data.service}`);
-  console.log(`Message: ${data.message || "None"}`);
-  console.log(`Submitted: ${data.submittedAt}`);
-  console.log("========================");
-
-  // TODO: Integrate with email service
-  // Example with Resend:
-  // const resend = new Resend(process.env.RESEND_API_KEY);
-  // await resend.emails.send({
-  //   from: 'enquiries@comparevetfees.com',
-  //   to: data.practiceEmail || 'admin@comparevetfees.com',
-  //   subject: `New Enquiry from ${data.customerName} via CompareVetFees`,
-  //   html: `
-  //     <h2>New Lead from CompareVetFees</h2>
-  //     <p><strong>Practice:</strong> ${data.practiceName}</p>
-  //     <p><strong>Customer:</strong> ${data.customerName}</p>
-  //     <p><strong>Email:</strong> ${data.customerEmail}</p>
-  //     <p><strong>Phone:</strong> ${data.customerPhone}</p>
-  //     <p><strong>Pet Type:</strong> ${data.petType}</p>
-  //     <p><strong>Service Needed:</strong> ${data.service}</p>
-  //     <p><strong>Message:</strong> ${data.message}</p>
-  //     <hr />
-  //     <p><small>Lead generated via CompareVetFees.com</small></p>
-  //   `,
-  // });
-
-  return true;
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -59,7 +14,6 @@ export async function POST(request: NextRequest) {
       service,
       message,
       practiceSlug,
-      practiceName,
     } = body;
 
     // Validate required fields
@@ -70,7 +24,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get practice details
+    // Get practice details (static fallback for name display)
     const practice = getPracticeBySlug(practiceSlug);
     if (!practice) {
       return NextResponse.json(
@@ -79,29 +33,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Prepare email data
-    const emailData = {
-      practiceEmail: undefined, // TODO: Add practice email to data model
-      practiceName: practice.name,
-      customerName: name,
-      customerEmail: email,
-      customerPhone: phone || "",
-      petType,
-      service,
-      message: message || "",
-      submittedAt: new Date().toISOString(),
-    };
+    // Look up practice UUID from Supabase
+    const supabase = createAdminClient();
+    const { data: dbPractice } = await supabase
+      .from("practices")
+      .select("id")
+      .eq("slug", practiceSlug)
+      .single();
 
-    // Send email notification
-    await sendEmailNotification(emailData);
+    if (dbPractice) {
+      // Persist lead in database
+      const { error: leadError } = await supabase.from("leads").insert({
+        practice_id: dbPractice.id,
+        customer_name: name,
+        customer_email: email,
+        customer_phone: phone || null,
+        pet_type: petType,
+        service,
+        message: message || null,
+      });
 
-    // TODO: Store lead in database for tracking
-    // await db.leads.create({
-    //   practiceId: practice.slug,
-    //   customerName: name,
-    //   customerEmail: email,
-    //   ...
-    // });
+      if (leadError) {
+        console.error("Failed to insert lead:", leadError.message);
+      }
+    } else {
+      // Supabase not seeded yet — log for now
+      console.log("=== NEW LEAD (no DB) ===");
+      console.log(`Practice: ${practice.name} (${practiceSlug})`);
+      console.log(`Customer: ${name} (${email})`);
+      console.log("========================");
+    }
+
+    // TODO: Send email notification via Resend
+    // const resend = new Resend(process.env.RESEND_API_KEY);
+    // await resend.emails.send({ ... });
 
     return NextResponse.json({
       success: true,

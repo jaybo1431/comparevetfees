@@ -1,21 +1,24 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { practices, getPracticeBySlug } from "@/data/practices";
+import { getAllSlugs, getPracticeBySlug, getAllPractices } from "@/lib/practices";
 import PracticeDetailClient from "@/components/PracticeDetailClient";
 import type { Metadata } from "next";
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return practices.map((p) => ({ slug: p.slug }));
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const practice = getPracticeBySlug(slug);
+  const practice = await getPracticeBySlug(slug);
   if (!practice) return { title: "Practice Not Found" };
   return {
     title: `${practice.name} — Prices & Reviews | CompareVetFees`,
@@ -25,8 +28,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PracticePage({ params }: PageProps) {
   const { slug } = await params;
-  const practice = getPracticeBySlug(slug);
+  const practice = await getPracticeBySlug(slug);
   if (!practice) notFound();
+
+  const allPractices = await getAllPractices();
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -37,7 +42,7 @@ export default async function PracticePage({ params }: PageProps) {
         <ArrowLeft className="w-4 h-4" /> Back to all practices
       </Link>
 
-      <PracticeDetailClient practice={practice} practicesCount={practices.length} />
+      <PracticeDetailClient practice={practice} practicesCount={allPractices.length} />
     </div>
   );
 }

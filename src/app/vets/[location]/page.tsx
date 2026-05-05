@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MapPin, Shield } from "lucide-react";
-import { getPracticesByTown, getTowns } from "@/data/practices";
+import { getAllPractices, getPracticesByTown } from "@/lib/practices";
 import PracticeCard from "@/components/PracticeCard";
 import PriceComparisonTable from "@/components/PriceComparisonTable";
 import type { Metadata } from "next";
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ location: string }>;
@@ -95,14 +97,9 @@ export default async function LocationPage({ params }: PageProps) {
 
   if (!info) notFound();
 
-  let practices;
-  if (location === "dorset") {
-    // Show all practices for Dorset overview
-    const { practices: allPractices } = await import("@/data/practices");
-    practices = allPractices;
-  } else {
-    practices = getPracticesByTown(info.fullName);
-  }
+  const practices = location === "dorset"
+    ? await getAllPractices()
+    : await getPracticesByTown(info.fullName);
 
   if (practices.length === 0) notFound();
 
@@ -146,11 +143,11 @@ export default async function LocationPage({ params }: PageProps) {
             <p className="text-xs text-gray-500">Practices Listed</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
-            <p className="text-2xl font-bold text-gray-900">£{avgConsult}</p>
+            <p className="text-2xl font-bold text-gray-900">&pound;{avgConsult}</p>
             <p className="text-xs text-gray-500">Avg Consultation</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
-            <p className="text-2xl font-bold text-blue-600">£{lowestConsult}</p>
+            <p className="text-2xl font-bold text-blue-600">&pound;{lowestConsult}</p>
             <p className="text-xs text-gray-500">Lowest Consultation</p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
@@ -189,9 +186,9 @@ export default async function LocationPage({ params }: PageProps) {
                   <div>
                     <p className="text-xs text-gray-500">Standard Consultation</p>
                     <p className="text-sm text-gray-900">
-                      <span className="font-bold text-blue-600">£{lowestConsult}</span>
+                      <span className="font-bold text-blue-600">&pound;{lowestConsult}</span>
                       {" – "}
-                      <span className="font-bold text-gray-900">£{highestConsult}</span>
+                      <span className="font-bold text-gray-900">&pound;{highestConsult}</span>
                     </p>
                   </div>
                   <div className="pt-3 border-t border-gray-100">

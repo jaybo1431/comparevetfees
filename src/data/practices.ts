@@ -936,40 +936,6 @@ export const practices: Practice[] = [
     },
   },
 
-  // POOLE (Additional - 1 more practice)
-  {
-    slug: "pet-health-partnership-upton",
-    name: "Pet Health Partnership - Upton",
-    address: "6 The Parade, Moorland Way",
-    town: "Poole",
-    county: "Dorset",
-    postcode: "BH16 5JS",
-    phone: "01202 624140",
-    email: "upton@thepethealthpartnership.co.uk",
-    website: "https://www.thepethealthpartnership.co.uk",
-    rating: 4.6,
-    reviewCount: 218,
-    transparencyScore: 4,
-    isIndependent: true,
-    openingSince: 2005,
-    lat: 50.7521,
-    lng: -1.9742,
-    features: ["Health Plans Available", "Friendly Team", "Modern Facilities"],
-    prices: {
-      consultation: 55,
-      vaccination: 51,
-      catNeutering: 113,
-      dogNeuteringMale: 238,
-      dogSpayFemale: 308,
-      dentalCheckClean: 378,
-      microchip: 24,
-      prescription: 18,
-      emergencyConsultation: 188,
-      xray: 166,
-      bloodTest: 95,
-    },
-  },
-
   // BLANDFORD FORUM (2 practices)
   {
     slug: "friars-moor-vets-blandford",
