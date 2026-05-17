@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MapPin, Shield } from "lucide-react";
-import { getAllPractices, getPracticesByTown } from "@/lib/practices";
+import { getAllPractices, getPracticesByTown, getPracticesByCounty } from "@/lib/practices";
 import PracticeCard from "@/components/PracticeCard";
 import PriceComparisonTable from "@/components/PriceComparisonTable";
 import type { Metadata } from "next";
@@ -12,67 +12,129 @@ interface PageProps {
   params: Promise<{ location: string }>;
 }
 
-const LOCATION_INFO: Record<string, { fullName: string; description: string }> = {
-  bournemouth: {
-    fullName: "Bournemouth",
-    description: "Compare vet prices across 7 practices in Bournemouth. From Charminster to Southbourne, find transparent pricing for consultations, vaccinations, neutering and more.",
-  },
-  poole: {
-    fullName: "Poole",
-    description: "Compare vet prices across 6 practices in Poole. Covering Parkstone, Canford Heath, Broadstone, Hamworthy and Upton with full price transparency.",
-  },
-  christchurch: {
-    fullName: "Christchurch",
-    description: "Compare vet prices across 4 practices in Christchurch. Including Highcliffe, Mudeford, and Burton with detailed pricing for all common treatments.",
-  },
-  dorchester: {
-    fullName: "Dorchester",
-    description: "Compare vet prices across 2 practices in Dorchester. Covering Poundbury and surrounding areas with transparent veterinary pricing.",
-  },
-  weymouth: {
-    fullName: "Weymouth",
-    description: "Compare vet prices across 3 practices in Weymouth. Including Wyke Regis, Upwey, and Rodwell with full price comparisons.",
-  },
-  wimborne: {
-    fullName: "Wimborne",
-    description: "Compare vet prices across 3 practices in Wimborne. Covering Colehill and surrounding areas with detailed veterinary costs.",
-  },
-  ferndown: {
-    fullName: "Ferndown",
-    description: "Compare vet prices across 2 practices in Ferndown with transparent pricing for all common procedures.",
-  },
-  verwood: {
-    fullName: "Verwood",
-    description: "Compare vet prices across 2 practices in Verwood with detailed pricing information for consultations, vaccinations, and treatments.",
-  },
-  "blandford-forum": {
-    fullName: "Blandford Forum",
-    description: "Compare vet prices across 2 practices in Blandford Forum with transparent pricing for farm animals, pets, and equine services.",
-  },
-  bridport: {
-    fullName: "Bridport",
-    description: "Compare vet prices across 2 practices in Bridport with detailed pricing for small animal and farm services in West Dorset.",
-  },
-  swanage: {
-    fullName: "Swanage",
-    description: "Compare vet prices in Swanage with detailed coastal pet care pricing and comprehensive veterinary services.",
-  },
-  wareham: {
-    fullName: "Wareham",
-    description: "Compare vet prices across 2 practices in Wareham with transparent pricing for pets in Purbeck and surrounding areas.",
-  },
-  shaftesbury: {
-    fullName: "Shaftesbury",
-    description: "Compare vet prices across 2 practices in Shaftesbury with detailed pricing for small animal care in North Dorset.",
-  },
-  sherborne: {
-    fullName: "Sherborne",
-    description: "Compare vet prices across 3 practices in Sherborne with transparent pricing for farm animals and small animal care.",
-  },
-  dorset: {
-    fullName: "Dorset",
-    description: "Compare vet prices across all 41 practices in Dorset. From Bournemouth to Sherborne, find transparent pricing across the county.",
-  },
+// Counties list for routing
+const COUNTY_SLUGS: Record<string, string> = {
+  dorset: "Dorset",
+  devon: "Devon",
+  hampshire: "Hampshire",
+  somerset: "Somerset",
+  wiltshire: "Wiltshire",
+  cornwall: "Cornwall",
+  gloucestershire: "Gloucestershire",
+  oxfordshire: "Oxfordshire",
+  berkshire: "Berkshire",
+  buckinghamshire: "Buckinghamshire",
+  "isle-of-wight": "Isle of Wight",
+  surrey: "Surrey",
+  kent: "Kent",
+  "east-sussex": "East Sussex",
+  "west-sussex": "West Sussex",
+  "greater-london": "Greater London",
+  essex: "Essex",
+  hertfordshire: "Hertfordshire",
+};
+
+const LOCATION_INFO: Record<string, { fullName: string; description: string; type?: "county" | "town" }> = {
+  // COUNTY ROUTES
+  dorset: { fullName: "Dorset", type: "county", description: "Compare vet prices across all practices in Dorset. From Bournemouth to Sherborne, find transparent pricing across the county." },
+  devon: { fullName: "Devon", type: "county", description: "Compare vet prices across all practices in Devon. From Exeter to Plymouth, find transparent pricing for consultations, vaccinations, and more." },
+  hampshire: { fullName: "Hampshire", type: "county", description: "Compare vet prices across all practices in Hampshire. From Southampton to Portsmouth, find transparent pricing across the county." },
+  somerset: { fullName: "Somerset", type: "county", description: "Compare vet prices across all practices in Somerset. From Bath to Taunton, find transparent pricing for all common procedures." },
+  wiltshire: { fullName: "Wiltshire", type: "county", description: "Compare vet prices across all practices in Wiltshire. From Salisbury to Swindon, find transparent pricing across the county." },
+  cornwall: { fullName: "Cornwall", type: "county", description: "Compare vet prices across all practices in Cornwall. From Truro to Penzance, find transparent pricing for consultations, vaccinations, and more." },
+  gloucestershire: { fullName: "Gloucestershire", type: "county", description: "Compare vet prices across all practices in Gloucestershire. From Cheltenham to Gloucester, find transparent pricing across the county." },
+  oxfordshire: { fullName: "Oxfordshire", type: "county", description: "Compare vet prices across all practices in Oxfordshire. From Oxford to Banbury, find transparent pricing for all common procedures." },
+  berkshire: { fullName: "Berkshire", type: "county", description: "Compare vet prices across all practices in Berkshire. From Reading to Windsor, find transparent pricing for consultations, vaccinations, and more." },
+  buckinghamshire: { fullName: "Buckinghamshire", type: "county", description: "Compare vet prices across all practices in Buckinghamshire. From Aylesbury to High Wycombe, find transparent pricing across the county." },
+  "isle-of-wight": { fullName: "Isle of Wight", type: "county", description: "Compare vet prices across all practices on the Isle of Wight. From Newport to Ryde, find transparent pricing for all common procedures." },
+  surrey: { fullName: "Surrey", type: "county", description: "Compare vet prices across all practices in Surrey. From Guildford to Woking, find transparent pricing for consultations, vaccinations, and more." },
+  kent: { fullName: "Kent", type: "county", description: "Compare vet prices across all practices in Kent. From Canterbury to Maidstone, find transparent pricing across the county." },
+  "east-sussex": { fullName: "East Sussex", type: "county", description: "Compare vet prices across all practices in East Sussex. From Brighton to Eastbourne, find transparent pricing for all common procedures." },
+  "west-sussex": { fullName: "West Sussex", type: "county", description: "Compare vet prices across all practices in West Sussex. From Chichester to Crawley, find transparent pricing across the county." },
+  "greater-london": { fullName: "Greater London", type: "county", description: "Compare vet prices across all practices in Greater London. From Westminster to Richmond, find transparent pricing for consultations, vaccinations, and more." },
+  essex: { fullName: "Essex", type: "county", description: "Compare vet prices across all practices in Essex. From Chelmsford to Colchester, find transparent pricing across the county." },
+  hertfordshire: { fullName: "Hertfordshire", type: "county", description: "Compare vet prices across all practices in Hertfordshire. From St Albans to Watford, find transparent pricing for all common procedures." },
+  // DORSET TOWNS
+  bournemouth: { fullName: "Bournemouth", description: "Compare vet prices across practices in Bournemouth. From Charminster to Southbourne, find transparent pricing for consultations, vaccinations, neutering and more." },
+  poole: { fullName: "Poole", description: "Compare vet prices across practices in Poole. Covering Parkstone, Canford Heath, Broadstone, Hamworthy and Upton with full price transparency." },
+  christchurch: { fullName: "Christchurch", description: "Compare vet prices across practices in Christchurch. Including Highcliffe, Mudeford, and Burton with detailed pricing for all common treatments." },
+  dorchester: { fullName: "Dorchester", description: "Compare vet prices across practices in Dorchester. Covering Poundbury and surrounding areas with transparent veterinary pricing." },
+  weymouth: { fullName: "Weymouth", description: "Compare vet prices across practices in Weymouth. Including Wyke Regis, Upwey, and Rodwell with full price comparisons." },
+  wimborne: { fullName: "Wimborne", description: "Compare vet prices across practices in Wimborne. Covering Colehill and surrounding areas with detailed veterinary costs." },
+  ferndown: { fullName: "Ferndown", description: "Compare vet prices across practices in Ferndown with transparent pricing for all common procedures." },
+  verwood: { fullName: "Verwood", description: "Compare vet prices across practices in Verwood with detailed pricing information." },
+  "blandford-forum": { fullName: "Blandford Forum", description: "Compare vet prices across practices in Blandford Forum with transparent pricing for pets and farm animals." },
+  bridport: { fullName: "Bridport", description: "Compare vet prices across practices in Bridport with detailed pricing for small animal and farm services." },
+  swanage: { fullName: "Swanage", description: "Compare vet prices in Swanage with detailed coastal pet care pricing." },
+  wareham: { fullName: "Wareham", description: "Compare vet prices across practices in Wareham with transparent pricing for pets in Purbeck." },
+  shaftesbury: { fullName: "Shaftesbury", description: "Compare vet prices across practices in Shaftesbury with detailed pricing for small animal care." },
+  sherborne: { fullName: "Sherborne", description: "Compare vet prices across practices in Sherborne with transparent pricing." },
+  // DEVON TOWNS
+  exeter: { fullName: "Exeter", description: "Compare vet prices across practices in Exeter with transparent pricing for consultations, vaccinations, and more." },
+  plymouth: { fullName: "Plymouth", description: "Compare vet prices across practices in Plymouth with detailed pricing for all common procedures." },
+  torquay: { fullName: "Torquay", description: "Compare vet prices across practices in Torquay with transparent veterinary pricing." },
+  barnstaple: { fullName: "Barnstaple", description: "Compare vet prices across practices in Barnstaple with detailed pricing for small animals and farm services." },
+  // HAMPSHIRE TOWNS
+  southampton: { fullName: "Southampton", description: "Compare vet prices across practices in Southampton with transparent pricing for all common procedures." },
+  basingstoke: { fullName: "Basingstoke", description: "Compare vet prices across practices in Basingstoke with detailed veterinary pricing." },
+  // SOMERSET TOWNS
+  bath: { fullName: "Bath", description: "Compare vet prices across practices in Bath with transparent pricing for consultations, vaccinations, and more." },
+  taunton: { fullName: "Taunton", description: "Compare vet prices across practices in Taunton with detailed pricing for all common procedures." },
+  // WILTSHIRE TOWNS
+  salisbury: { fullName: "Salisbury", description: "Compare vet prices across practices in Salisbury with transparent pricing across the city." },
+  swindon: { fullName: "Swindon", description: "Compare vet prices across practices in Swindon with detailed veterinary pricing." },
+  // CORNWALL TOWNS
+  truro: { fullName: "Truro", description: "Compare vet prices across practices in Truro with transparent pricing for consultations, vaccinations, and more." },
+  falmouth: { fullName: "Falmouth", description: "Compare vet prices across practices in Falmouth with detailed pricing for all common procedures." },
+  penzance: { fullName: "Penzance", description: "Compare vet prices across practices in Penzance with transparent veterinary pricing." },
+  newquay: { fullName: "Newquay", description: "Compare vet prices across practices in Newquay with detailed pricing for pets in Cornwall." },
+  bodmin: { fullName: "Bodmin", description: "Compare vet prices across practices in Bodmin with transparent pricing." },
+  // GLOUCESTERSHIRE TOWNS
+  cheltenham: { fullName: "Cheltenham", description: "Compare vet prices across practices in Cheltenham with transparent pricing for all common procedures." },
+  gloucester: { fullName: "Gloucester", description: "Compare vet prices across practices in Gloucester with detailed veterinary pricing." },
+  cirencester: { fullName: "Cirencester", description: "Compare vet prices across practices in Cirencester with transparent pricing." },
+  // OXFORDSHIRE TOWNS
+  oxford: { fullName: "Oxford", description: "Compare vet prices across practices in Oxford with transparent pricing for consultations, vaccinations, and more." },
+  banbury: { fullName: "Banbury", description: "Compare vet prices across practices in Banbury with detailed pricing for all common procedures." },
+  witney: { fullName: "Witney", description: "Compare vet prices across practices in Witney with transparent veterinary pricing." },
+  // BERKSHIRE TOWNS
+  reading: { fullName: "Reading", description: "Compare vet prices across practices in Reading with transparent pricing for all common procedures." },
+  newbury: { fullName: "Newbury", description: "Compare vet prices across practices in Newbury with detailed veterinary pricing." },
+  windsor: { fullName: "Windsor", description: "Compare vet prices across practices in Windsor with transparent pricing." },
+  bracknell: { fullName: "Bracknell", description: "Compare vet prices across practices in Bracknell with detailed pricing." },
+  // BUCKINGHAMSHIRE TOWNS
+  "high-wycombe": { fullName: "High Wycombe", description: "Compare vet prices across practices in High Wycombe with transparent pricing for all common procedures." },
+  "milton-keynes": { fullName: "Milton Keynes", description: "Compare vet prices across practices in Milton Keynes with detailed veterinary pricing." },
+  aylesbury: { fullName: "Aylesbury", description: "Compare vet prices across practices in Aylesbury with transparent pricing." },
+  // SURREY TOWNS
+  guildford: { fullName: "Guildford", description: "Compare vet prices across practices in Guildford with transparent pricing for all common procedures." },
+  woking: { fullName: "Woking", description: "Compare vet prices across practices in Woking with detailed veterinary pricing." },
+  epsom: { fullName: "Epsom", description: "Compare vet prices across practices in Epsom with transparent pricing." },
+  // KENT TOWNS
+  canterbury: { fullName: "Canterbury", description: "Compare vet prices across practices in Canterbury with transparent pricing for all common procedures." },
+  maidstone: { fullName: "Maidstone", description: "Compare vet prices across practices in Maidstone with detailed veterinary pricing." },
+  "tunbridge-wells": { fullName: "Tunbridge Wells", description: "Compare vet prices across practices in Tunbridge Wells with transparent pricing." },
+  // EAST SUSSEX TOWNS
+  brighton: { fullName: "Brighton", description: "Compare vet prices across practices in Brighton with transparent pricing for all common procedures." },
+  eastbourne: { fullName: "Eastbourne", description: "Compare vet prices across practices in Eastbourne with detailed veterinary pricing." },
+  hastings: { fullName: "Hastings", description: "Compare vet prices across practices in Hastings with transparent pricing." },
+  // WEST SUSSEX TOWNS
+  chichester: { fullName: "Chichester", description: "Compare vet prices across practices in Chichester with transparent pricing for all common procedures." },
+  worthing: { fullName: "Worthing", description: "Compare vet prices across practices in Worthing with detailed veterinary pricing." },
+  crawley: { fullName: "Crawley", description: "Compare vet prices across practices in Crawley with transparent pricing." },
+  horsham: { fullName: "Horsham", description: "Compare vet prices across practices in Horsham with detailed pricing." },
+  // ESSEX TOWNS
+  chelmsford: { fullName: "Chelmsford", description: "Compare vet prices across practices in Chelmsford with transparent pricing for all common procedures." },
+  colchester: { fullName: "Colchester", description: "Compare vet prices across practices in Colchester with detailed veterinary pricing." },
+  "southend-on-sea": { fullName: "Southend-on-Sea", description: "Compare vet prices across practices in Southend with transparent pricing." },
+  // HERTFORDSHIRE TOWNS
+  "st-albans": { fullName: "St Albans", description: "Compare vet prices across practices in St Albans with transparent pricing for all common procedures." },
+  watford: { fullName: "Watford", description: "Compare vet prices across practices in Watford with detailed veterinary pricing." },
+  "hemel-hempstead": { fullName: "Hemel Hempstead", description: "Compare vet prices across practices in Hemel Hempstead with transparent pricing." },
+  // GREATER LONDON AREAS
+  wimbledon: { fullName: "Wimbledon", description: "Compare vet prices across practices in Wimbledon with transparent pricing for consultations, vaccinations, and more." },
+  richmond: { fullName: "Richmond", description: "Compare vet prices across practices in Richmond with detailed veterinary pricing." },
+  "kingston-upon-thames": { fullName: "Kingston upon Thames", description: "Compare vet prices across practices in Kingston with transparent pricing." },
 };
 
 export async function generateStaticParams() {
@@ -97,8 +159,8 @@ export default async function LocationPage({ params }: PageProps) {
 
   if (!info) notFound();
 
-  const practices = location === "dorset"
-    ? await getAllPractices()
+  const practices = info.type === "county"
+    ? await getPracticesByCounty(info.fullName)
     : await getPracticesByTown(info.fullName);
 
   if (practices.length === 0) notFound();
@@ -206,14 +268,14 @@ export default async function LocationPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Other Dorset Towns */}
-              {location !== "dorset" && (
+              {/* Browse by County */}
+              {info.type !== "county" && (
                 <div className="mt-6 bg-white rounded-xl border border-gray-200 p-5">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Other Dorset Towns</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Browse by County</h3>
                   <div className="space-y-2">
                     {Object.entries(LOCATION_INFO)
-                      .filter(([key]) => key !== location && key !== "dorset")
-                      .slice(0, 5)
+                      .filter(([, value]) => value.type === "county")
+                      .slice(0, 6)
                       .map(([key, value]) => (
                         <Link
                           key={key}
@@ -223,12 +285,6 @@ export default async function LocationPage({ params }: PageProps) {
                           {value.fullName} Vets →
                         </Link>
                       ))}
-                    <Link
-                      href="/vets/dorset"
-                      className="block text-sm font-medium text-gray-900 hover:text-blue-600 pt-2 border-t border-gray-100"
-                    >
-                      View all Dorset vets →
-                    </Link>
                   </div>
                 </div>
               )}

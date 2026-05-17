@@ -78,10 +78,10 @@ export default function AboutPage() {
       </div>
 
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
-        <h2 className="text-xl font-semibold text-gray-900 mb-3">Starting in Dorset</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-3">Covering Southern England</h2>
         <p className="text-gray-600 max-w-lg mx-auto mb-6">
-          We&apos;re launching in Dorset first — Bournemouth, Poole, Christchurch, Dorchester, Weymouth, and surrounding towns.
-          Once we prove the model works locally, we&apos;ll expand regionally and eventually nationwide as the CMA reforms roll out.
+          We cover 530+ practices across 18 counties — from Cornwall and Devon through to Greater London, Kent, and Essex —
+          spanning 200+ towns across the whole of Southern England. We&apos;re expanding nationwide as the CMA reforms roll out.
         </p>
         <Link
           href="/"

@@ -31,13 +31,23 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">Dorset Towns</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">Browse by Region</h4>
             <ul className="space-y-2">
-              <li><Link href="/vets/bournemouth" className="text-sm text-gray-500 hover:text-blue-600">Bournemouth</Link></li>
-              <li><Link href="/vets/poole" className="text-sm text-gray-500 hover:text-blue-600">Poole</Link></li>
-              <li><Link href="/vets/christchurch" className="text-sm text-gray-500 hover:text-blue-600">Christchurch</Link></li>
-              <li><Link href="/vets/dorchester" className="text-sm text-gray-500 hover:text-blue-600">Dorchester</Link></li>
-              <li><Link href="/vets/dorset" className="text-sm font-medium text-gray-900 hover:text-blue-600">View All →</Link></li>
+              <li className="text-xs font-medium text-gray-400 uppercase tracking-wide pt-1">South West</li>
+              <li><Link href="/vets/devon" className="text-sm text-gray-500 hover:text-blue-600">Devon</Link></li>
+              <li><Link href="/vets/dorset" className="text-sm text-gray-500 hover:text-blue-600">Dorset</Link></li>
+              <li><Link href="/vets/cornwall" className="text-sm text-gray-500 hover:text-blue-600">Cornwall</Link></li>
+              <li><Link href="/vets/somerset" className="text-sm text-gray-500 hover:text-blue-600">Somerset</Link></li>
+              <li className="text-xs font-medium text-gray-400 uppercase tracking-wide pt-2">South East</li>
+              <li><Link href="/vets/kent" className="text-sm text-gray-500 hover:text-blue-600">Kent</Link></li>
+              <li><Link href="/vets/surrey" className="text-sm text-gray-500 hover:text-blue-600">Surrey</Link></li>
+              <li><Link href="/vets/east-sussex" className="text-sm text-gray-500 hover:text-blue-600">East Sussex</Link></li>
+              <li><Link href="/vets/hampshire" className="text-sm text-gray-500 hover:text-blue-600">Hampshire</Link></li>
+              <li className="text-xs font-medium text-gray-400 uppercase tracking-wide pt-2">London &amp; Home Counties</li>
+              <li><Link href="/vets/greater-london" className="text-sm text-gray-500 hover:text-blue-600">Greater London</Link></li>
+              <li><Link href="/vets/essex" className="text-sm text-gray-500 hover:text-blue-600">Essex</Link></li>
+              <li><Link href="/vets/hertfordshire" className="text-sm text-gray-500 hover:text-blue-600">Hertfordshire</Link></li>
+              <li><Link href="/vets/berkshire" className="text-sm text-gray-500 hover:text-blue-600">Berkshire</Link></li>
             </ul>
           </div>
         </div>

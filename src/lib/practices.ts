@@ -10,6 +10,7 @@ import {
   practices as staticPractices,
   getPracticeBySlug as staticGetPracticeBySlug,
   getPracticesByTown as staticGetPracticesByTown,
+  getPracticesByCounty as staticGetPracticesByCounty,
   getAveragePrice as staticGetAveragePrice,
   searchPractices as staticSearchPractices,
   getTowns as staticGetTowns,
@@ -238,6 +239,40 @@ export async function getTowns(): Promise<string[]> {
     return towns.sort();
   } catch {
     return staticGetTowns();
+  }
+}
+
+export async function getPracticesByCounty(county: string): Promise<Practice[]> {
+  try {
+    const supabase = createAdminClient();
+
+    const { data: practiceRows, error } = await supabase
+      .from("practices")
+      .select("*")
+      .ilike("county", county)
+      .eq("is_published", true)
+      .order("name");
+
+    if (error || !practiceRows) throw error;
+
+    const ids = practiceRows.map((r) => r.id);
+    const { data: priceRows } = await supabase
+      .from("current_prices")
+      .select("practice_id, procedure_key, price, notes")
+      .in("practice_id", ids);
+
+    const priceMap = new Map<string, DbPrice[]>();
+    for (const pr of priceRows ?? []) {
+      const list = priceMap.get(pr.practice_id) ?? [];
+      list.push(pr as DbPrice);
+      priceMap.set(pr.practice_id, list);
+    }
+
+    return practiceRows.map((row) =>
+      toFrontendPractice(row as DbPractice, priceMap.get(row.id) ?? [])
+    );
+  } catch {
+    return staticGetPracticesByCounty(county);
   }
 }
 

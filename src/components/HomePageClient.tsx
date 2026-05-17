@@ -40,8 +40,8 @@ export default function HomePageClient({ practices }: HomePageClientProps) {
               <span className="text-blue-600">before you walk in.</span>
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Compare veterinary prices across Dorset practices.
-              From Bournemouth to Weymouth — see the real costs, side by side.
+              Compare veterinary prices across 530+ practices in Southern England.
+              From Cornwall to Kent, London to the Isle of Wight — see the real costs, side by side.
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
@@ -52,7 +52,7 @@ export default function HomePageClient({ practices }: HomePageClientProps) {
 
       {/* Stats */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-        <StatsBar />
+        <StatsBar practices={practices} />
       </section>
 
       {/* CMA Banner */}
